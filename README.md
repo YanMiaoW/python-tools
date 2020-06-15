@@ -1,7 +1,9 @@
-# tools
-Here are some useful python scripts to help you do cool things
+## 视频截帧脚本
 
-## video frame capture
+用来截取视频帧的脚本，应用场景是需要从视频中截取帧作为训练样本，追求简单又快速。给出视频文件所在根目录，脚本会自动寻找所有在此目录下的视频文件，用键盘的a,s,d,w,e,Esc键来控制脚本，详情请用
+`python video_capture.py --help`查看细节。
 
-When you need some video frame cut tools to help you capture some frames in the video, this python script `video_capture.py` can help you.
-Just shell command `python video_capture.py --help` see details.
+## 图片整理脚本
+
+用来整理图片数据集的脚本，应用场景是需要从文件夹及其子文件夹中提取所有图片，重命名，转换格式。
+该脚本可以开启选项，将图片打乱顺序，分成test和train文件夹，详情请用`python image_organize.py --help`。
