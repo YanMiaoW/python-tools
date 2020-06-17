@@ -30,17 +30,18 @@ def main(images_root, save_path, test_number):
     if os.path.exists(save_path):
         shutil.rmtree(save_path)
 
-    # 生成文件夹
+    # 生成保存文件夹
     os.mkdir(save_path)
     if test_number:
-        os.mkdir(save_path+'/test')
-        os.mkdir(save_path+'/train')
+        os.mkdir(save_path + '/test')
+        os.mkdir(save_path + '/train')
 
     def iter_folder_tree(rootdir):
-        '''遍历整个文件夹树，将所有文件的路径提取出来'''
+        '''遍历整个文件夹树，将所有图片文件的路径提取出来'''
+
         paths = []
 
-        #遍历文件夹
+        # 遍历文件夹
         for subdir, dirs, files in os.walk(rootdir):
             for file in files:
                 path = os.path.join(subdir, file)
@@ -55,7 +56,9 @@ def main(images_root, save_path, test_number):
         return paths
 
     image_id = 1
+
     test_image_id = 1
+
     for image_path in iter_folder_tree(images_root):
         print(image_path)
 
@@ -79,7 +82,6 @@ def main(images_root, save_path, test_number):
             new_image_path = f'{save_path}/{str(image_id).zfill(5)}.jpg'
         cv.imwrite(new_image_path, img)
 
-        # 训练图片的名称id自加1
         image_id += 1
 
 
