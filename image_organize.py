@@ -63,6 +63,7 @@ def main(images_root, save_path, test_number):
     test_image_id = 1
 
     for image_path in iter_folder_tree(images_root):
+      
         # 打印图片路径
         print(image_path)
 
@@ -85,7 +86,6 @@ def main(images_root, save_path, test_number):
         else:
             new_image_path = f'{save_path}/{str(image_id).zfill(5)}.jpg'
         cv.imwrite(new_image_path, img)
-        
         image_id += 1
 
 
