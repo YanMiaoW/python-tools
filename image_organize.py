@@ -6,11 +6,11 @@ import click
 import cv2 as cv
 import numpy as np
 
+
 '''
 example:
 python image_organize.py -r "E:\Desktop\image_spyder" -s "E:\Desktop\image_fix\2020-06-15\road_disease"
 python image_organize.py -r "E:\Desktop\image_spyder" -s "E:\Desktop\image_fix\2020-06-15\road_disease -t 50"
-
 '''
 
 
@@ -38,10 +38,11 @@ def main(images_root, save_path, test_number):
 
     def iter_folder_tree(rootdir):
         '''遍历整个文件夹树，将所有图片文件的路径提取出来'''
-
+        
+        # 路径数组
         paths = []
 
-        # 遍历文件夹
+        # 遍历文件夹，找出所有的图片
         for subdir, dirs, files in os.walk(rootdir):
             for file in files:
                 path = os.path.join(subdir, file)
@@ -50,16 +51,19 @@ def main(images_root, save_path, test_number):
                         os.path.basename(path).endswith('.bmp'):
                     paths.append(path)
 
-        # 打乱顺序
+        # 打乱路径顺序
         random.shuffle(paths)
 
         return paths
-
+    
+    # 图片id
     image_id = 1
 
+    # 测试图片id
     test_image_id = 1
 
     for image_path in iter_folder_tree(images_root):
+        # 打印图片路径
         print(image_path)
 
         # 读取图片
@@ -81,12 +85,12 @@ def main(images_root, save_path, test_number):
         else:
             new_image_path = f'{save_path}/{str(image_id).zfill(5)}.jpg'
         cv.imwrite(new_image_path, img)
-
+        
         image_id += 1
 
 
 def imread(path):
-    '''opencv的imread方法对中文路径的支持不好，用这个函数代替'''
+    '''opencv的imread方法对中文路径的支持不好，用此函数读取图片'''
     img = cv.imdecode(np.fromfile(path, dtype=np.uint8), -1)
     return img
 
