@@ -6,8 +6,8 @@ import cv2 as cv
 
 '''
 example:
-python video_frame_capture.py --videos-root "E:\Desktop\YM" --save-root "E:\Desktop\image_spyder\road_disease"
-python video_frame_capture.py -r "E:\Desktop\YM" -s "E:\Desktop\image_spyder\road_disease"  --screen-scale 0.6 --speed-up-rate 2 
+python video_frame_capture.py --videos-root "E:\Desktop\YM" --save-root "E:\Desktop\image_spyder\road_disease2"
+python video_frame_capture.py -r "E:\Desktop\DCIM4-20200615" -s "E:\Desktop\image_spyder\road_disease2"  --screen-scale 0.6 --speed-up-rate 2 
 '''
 
 
@@ -20,8 +20,8 @@ python video_frame_capture.py -r "E:\Desktop\YM" -s "E:\Desktop\image_spyder\roa
               help="屏幕缩放系数，改变窗口大小百分比，不影响截取的帧，截取的帧是原始分辨率大小")
 @click.option('--begin-video-filename', default=None, type=str,
               help="需要跳过前面的视频，从某个视频开始，需要输入这个视频名称")
-@click.option('--speed-up-rate', default=4, type=int,
-              help="加速速率大小, 默认4倍速")
+@click.option('--speed-up-rate', default=2, type=int,
+              help="加速速率大小, 默认2倍速")
 def main(videos_root, save_path, screen_scale, begin_video_filename, speed_up_rate):
     '''
     图片截图脚本，将视频放在一个文件夹里，运行此脚本会自动搜索该文件夹下面所有的视频，按顺序播放。
