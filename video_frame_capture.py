@@ -111,7 +111,7 @@ def main(videos_root, save_path, screen_scale, begin_video_filename, speed_up_ra
                 break
             # print(ret,frame)
 
-            # 帧显示的缩放
+            # 帧缩放
             if screen_scale:
                 frame2 = cv.resize(frame, (0, 0), fx=screen_scale, fy=screen_scale, interpolation=cv.INTER_AREA)
                 cv.imshow(video_filename, frame2)
